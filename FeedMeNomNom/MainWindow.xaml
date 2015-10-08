@@ -1,8 +1,9 @@
 ﻿<Window x:Class="FeedMeNomNom.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="768" Width="1024">
-    <Grid>
-        
+        Title="FeedMeNomNom" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid Background="White">
+        <TextBox x:Name="tbURL" Height="39" Margin="188,33,238,0" TextWrapping="Wrap" Text="...type URL here" VerticalAlignment="Top" FontSize="24" FontFamily="Prestige Elite Std"/>
+        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="257" Margin="188,77,0,0" VerticalAlignment="Top" Width="590"/>
     </Grid>
 </Window>

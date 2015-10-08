@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
+using System.ServiceModel.Syndication;
+using FeedMeNomNom.data;
 
 namespace FeedMeNomNom
 {
@@ -20,9 +23,14 @@ namespace FeedMeNomNom
     /// </summary>
     public partial class MainWindow : Window
     {
+        getFeed test = new getFeed();
+
         public MainWindow()
         {
             InitializeComponent();
+            test.googleGet();
         }
+
+
     }
 }
