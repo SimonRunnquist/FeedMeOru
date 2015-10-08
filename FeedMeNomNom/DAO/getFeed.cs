@@ -9,15 +9,14 @@ using System.ServiceModel.Syndication;
 using System.Net;
 using System.IO;
 
-namespace FeedMeNomNom.data
+namespace FeedMeNomNom.DAO
 {
     class getFeed
     {
-       
-
+        private string name;
+        
         public void googleGet(string userURL) {
             //string url = "http://news.google.fr/nwshp?hl=fr&tab=wn&output=rss";
-            //http://api.sr.se/api/rss/program/2332
             //http://alexosigge.libsyn.com//rss
             //http://hannahoamanda.libsyn.com/rss
 
@@ -36,16 +35,32 @@ namespace FeedMeNomNom.data
                         Console.WriteLine(link.Uri);
                     }
                 }
+
             }
         }
 
-        public void downloadMP3(string userURL) {
+        public void downloadMP3() {
             
             
-            /*using (var client = new WebClient())
+            using (var client = new WebClient())
             {
-                client.DownloadFile("http://traffic.libsyn.com/alexosigge/aosavsnitt175.mp3", "175.mp3");
-            }*/
+                Console.WriteLine("Downloading...");
+                client.DownloadFile("http://traffic.libsyn.com/alexosigge/aosavsnitt175.mp3", "190.mp3");
+                Console.WriteLine("Done!");
+            }
         }
+
+        public string Name {
+
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+
     }
 }

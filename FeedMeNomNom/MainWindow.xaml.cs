@@ -14,8 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using System.ServiceModel.Syndication;
-using FeedMeNomNom.data;
-using FeedMeNomNom.logic;
+using FeedMeNomNom.DAO;
+using FeedMeNomNom.BUS;
+using FeedMeNomNom.connectXML;
 
 namespace FeedMeNomNom
 {
@@ -26,16 +27,29 @@ namespace FeedMeNomNom
     {
         
         getFeed test = new getFeed();
+        saveXML createXml = new saveXML();
 
         public MainWindow()
         {
             InitializeComponent();
+            createXml.createBaseXml();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
             test.googleGet(tbURL.Text);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            test.downloadMP3();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            tbURL.Text = test.Name;
+            test.Name = "Mac!";
         }
 
         
