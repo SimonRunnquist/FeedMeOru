@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using System.ServiceModel.Syndication;
 using FeedMeNomNom.data;
+using FeedMeNomNom.logic;
 
 namespace FeedMeNomNom
 {
@@ -23,13 +24,23 @@ namespace FeedMeNomNom
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         getFeed test = new getFeed();
 
         public MainWindow()
         {
             InitializeComponent();
-            test.googleGet();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            test.googleGet(tbURL.Text);
+        }
+
+        
+
+       
 
 
     }
