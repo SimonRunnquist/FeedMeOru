@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="FeedMeNomNom" Height="768" Width="1024" WindowStartupLocation="CenterScreen" Background="#FF464646">
     <Grid Background="#FF001F1E">
-        <TextBox x:Name="tbURL" Height="30" Margin="10,10,416,0" TextWrapping="Wrap" Text="...type URL here" VerticalAlignment="Top" FontFamily="Prestige Elite Std" Background="White"/>
-        <Button Content="Get Feed" HorizontalAlignment="Left" Margin="605,10,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" Height="30"/>
+        <TextBox x:Name="tbURL" Height="30" Margin="185,51,254,0" TextWrapping="Wrap" Text="...type URL here" VerticalAlignment="Top" FontFamily="Prestige Elite Std" Background="White"/>
+        <Button x:Name="getFeed_button" Content="Get Feed" HorizontalAlignment="Left" Margin="767,51,0,0" VerticalAlignment="Top" Width="88" Height="30" Click="getFeed_button_Click"/>
         <Rectangle Fill="#FF003E3E" HorizontalAlignment="Left" Height="100" Margin="0,638,0,0" Stroke="Black" VerticalAlignment="Top" Width="1016" StrokeThickness="0"/>
-        <Button Content="Download MP3" HorizontalAlignment="Left" Margin="780,534,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_1" Height="32"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="780,499,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_2" Height="30"/>
+        <Button Content="Download MP3" HorizontalAlignment="Left" Margin="884,576,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_1" Height="32"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="884,540,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_2" Height="30"/>
+        <ListBox x:Name="listBox_Feed" HorizontalAlignment="Left" Height="507" Margin="185,101,0,0" VerticalAlignment="Top" Width="670" Background="#FF003E3E" BorderThickness="0" Foreground="White"/>
     </Grid>
 </Window>
