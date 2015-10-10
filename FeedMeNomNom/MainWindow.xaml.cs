@@ -17,6 +17,7 @@ using System.ServiceModel.Syndication;
 using FeedMeNomNom.DAO;
 using FeedMeNomNom.BUS;
 using FeedMeNomNom.connectXML;
+using System.Drawing;
 
 namespace FeedMeNomNom
 {
@@ -31,11 +32,13 @@ namespace FeedMeNomNom
         saveXML createXml = new saveXML();
         string[] podcast;
         string[] downloadURL;
+        public double getValueSlider;
 
         public MainWindow()
         {
             InitializeComponent();
             createXml.createBaseXml();
+            visibilityFeedSetting(true);
         }
 
       
@@ -45,23 +48,36 @@ namespace FeedMeNomNom
             test.downloadMP3();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            
-            test.Name = "Mac!";
-            tbURL.Text = test.Name;
-        }
+        private void visibilityFeedSetting(bool setting) {
+            if (setting)
+            {
+                downloadSelectedPod.Visibility = System.Windows.Visibility.Hidden;
+                savePodFeed.Visibility = System.Windows.Visibility.Hidden;
+                closeFeed.Visibility = System.Windows.Visibility.Hidden;
+                listBox_Feed.Visibility = System.Windows.Visibility.Hidden;
+                rectListboxFeed.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            else {
+                downloadSelectedPod.Visibility = System.Windows.Visibility.Visible;
+                savePodFeed.Visibility = System.Windows.Visibility.Visible;
+                closeFeed.Visibility = System.Windows.Visibility.Visible;
+                listBox_Feed.Visibility = System.Windows.Visibility.Visible;
+                rectListboxFeed.Visibility = System.Windows.Visibility.Visible;
+            }
+
+        } 
+
+        
+         
+         
 
         private void getFeed_button_Click(object sender, RoutedEventArgs e)
         {
-            listBox_Feed.Items.Clear();
+
+            listBox_Feed.Items.Clear(); 
             podcast = test.getPod(tbURL.Text);
             downloadURL = test.getDownloadURL();
-
-            //for (var i = 0; i < 20; i++) {
-              //  listBox_Feed.Items.Add(test.getPod(tb);
-            //}
-
 
             for (var i = 0; i < podcast.Length; i++)
             {
@@ -71,16 +87,44 @@ namespace FeedMeNomNom
                 }
                 else
                 {
-                    listBox_Feed.Items.Add(podcast[i]);
-                    listBox_Feed.Items.Add(downloadURL[i]);
-                    listBox_Feed.Items.Add(" ");
+                    listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
                 }
             }
 
+            
+            visibilityFeedSetting(false);
             test.wipeCollectedData();
         }
 
+        private void closeFeed_Click(object sender, RoutedEventArgs e)
+        {
+            visibilityFeedSetting(true);
+        }
+
         
+
+         
+
+        private void viewCategory_Click(object sender, RoutedEventArgs e)
+        {
+            double top = gridPage.Margin.Top;
+            double left = gridPage.Margin.Left;
+            gridPage.Margin = new Thickness(0, top, -890, 0);
+        }
+
+        private void viewFeeds_Click(object sender, RoutedEventArgs e)
+        {
+            double top = gridPage.Margin.Top;
+            double left = gridPage.Margin.Left;
+            gridPage.Margin = new Thickness(-890, top, 0, 0);
+        }
+
+        private void viewMain_Click(object sender, RoutedEventArgs e)
+        {
+            double top = gridPage.Margin.Top;
+            double left = gridPage.Margin.Left;
+            gridPage.Margin = new Thickness(-445, top, -445, 0);
+        }
 
        
 

@@ -35,7 +35,7 @@ namespace FeedMeNomNom.connectXML
                 new XElement("category", category),
                 new XElement("interval", interval),
                 new XElement("url", url),
-                new XElement("activated", activated));
+                new XElement("activated", activated)); 
             
             addFeed.Save("feedXml.xml");
 

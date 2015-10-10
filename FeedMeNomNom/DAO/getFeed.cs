@@ -36,7 +36,7 @@ namespace FeedMeNomNom.DAO
 
                 SyndicationFeed feed = SyndicationFeed.Load(reader);
                 //Console.WriteLine(feed.Title.Text);
-                //Console.WriteLine(feed.Links[0].Uri);
+                //Console.WriteLine(feed.Links[0].Uri); 
 
                 
                 foreach (SyndicationItem item in feed.Items)
@@ -99,7 +99,7 @@ namespace FeedMeNomNom.DAO
             set
             {
                 name = value;
-            }
+            } 
         }
 
         public void wipeCollectedData() {

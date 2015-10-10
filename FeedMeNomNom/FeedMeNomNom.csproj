@@ -61,6 +61,7 @@
     <Compile Include="BUS\downloader.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
+    <Compile Include="DAO\categoryItem.cs" />
     <Compile Include="Validator\validate.cs" />
     <Compile Include="VO\UserVO.cs" />
     <Page Include="MainWindow.xaml">
@@ -107,6 +108,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\" />
     <Folder Include="RSS\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
