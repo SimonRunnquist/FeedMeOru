@@ -109,21 +109,21 @@ namespace FeedMeNomNom
         {
             double top = gridPage.Margin.Top;
             double left = gridPage.Margin.Left;
-            gridPage.Margin = new Thickness(0, top, -890, 0);
+            gridPage.Margin = new Thickness(0, top, -788, 0);
         }
 
         private void viewFeeds_Click(object sender, RoutedEventArgs e)
         {
             double top = gridPage.Margin.Top;
             double left = gridPage.Margin.Left;
-            gridPage.Margin = new Thickness(-890, top, 0, 0);
+            gridPage.Margin = new Thickness(-1618, top, 0, 0);
         }
 
         private void viewMain_Click(object sender, RoutedEventArgs e)
         {
             double top = gridPage.Margin.Top;
             double left = gridPage.Margin.Left;
-            gridPage.Margin = new Thickness(-445, top, -445, 0);
+            gridPage.Margin = new Thickness(-800, top, -800, 0);
         }
 
        
