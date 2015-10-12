@@ -37,7 +37,7 @@
             </Grid.ColumnDefinitions>
             <Rectangle Grid.Column="1" Fill="#FFBD1010" HorizontalAlignment="Left" Height="414" Margin="1373,23,0,0" Grid.Row="1" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="471"/>
             <Rectangle Grid.Column="1" Fill="#FFBD1010" HorizontalAlignment="Left" Height="414" Margin="10,23,0,0" Grid.Row="1" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="471"/>
-            <Rectangle Grid.Column="1" Fill="#FF10BD10" HorizontalAlignment="Left" Height="414" Margin="519,23,0,0" Grid.Row="1" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="812"/>
+            <Rectangle Grid.Column="1" Fill="#FF103FBD" HorizontalAlignment="Left" Height="414" Margin="519,23,0,0" Grid.Row="1" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="812"/>
         </Grid>
         <Button x:Name="viewMain" Content="Center" HorizontalAlignment="Left" Margin="472,685,0,0" VerticalAlignment="Top" Width="75" Click="viewMain_Click"/>
         <Button x:Name="viewFeeds" Content="Feeds" HorizontalAlignment="Left" Margin="908,685,0,0" VerticalAlignment="Top" Width="75" Click="viewFeeds_Click"/>
