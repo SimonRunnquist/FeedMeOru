@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeedMeNomNom.connectXML
+namespace FeedMeNomNom.logic
 {
-    class readXML
+    class Class1
     {
-        public void hej()
-        {
-
-        }
     }
 }

@@ -8,6 +8,10 @@ namespace FeedMeNomNom.BUS
 {
     class addItem
     {
+        public addItem() {
 
+
+
+        }
     }
 }
