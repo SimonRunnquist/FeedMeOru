@@ -82,7 +82,7 @@ namespace FeedMeNomNom
             //podcast = test.getPod(tbURL.Text);
             podcast = getItemList.createFeed(tbURL.Text);
             //downloadURL = test.getDownloadURL();
-
+            Console.WriteLine(podcast.Count);
             for (var i = 0; i < podcast.Count; i++)
             {
                 if (podcast[i] == null)
@@ -92,6 +92,7 @@ namespace FeedMeNomNom
                 else
                 {
                     listBox_Feed.Items.Add(podcast[i].feedName);
+                    
                     //listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
                 }
             }
