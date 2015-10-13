@@ -19,6 +19,7 @@ using FeedMeNomNom.BUS;
 using FeedMeNomNom.connectXML;
 using System.Drawing;
 using System.Collections.Generic;
+using FeedMeNomNom.VO;
 
 namespace FeedMeNomNom
 {
@@ -28,9 +29,11 @@ namespace FeedMeNomNom
     public partial class MainWindow : Window
     {
         
-        getFeed test = new getFeed();
+        //getFeed test = new getFeed();
+        testAddItem getItemList = new testAddItem();
         saveXML createXml = new saveXML();
-        string[] podcast;
+        //string[] podcast;
+        List<itemVO> podcast = new List<itemVO>();
         string[] downloadURL;
         
 
@@ -45,7 +48,7 @@ namespace FeedMeNomNom
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            test.downloadMP3();
+            //test.downloadMP3();
         }
 
         private void visibilityFeedSetting(bool setting) {
@@ -76,10 +79,11 @@ namespace FeedMeNomNom
         {
 
             listBox_Feed.Items.Clear();
-            podcast = test.getPod(tbURL.Text);
-            downloadURL = test.getDownloadURL();
+            //podcast = test.getPod(tbURL.Text);
+            podcast = getItemList.createFeed(tbURL.Text);
+            //downloadURL = test.getDownloadURL();
 
-            for (var i = 0; i < podcast.Length; i++)
+            for (var i = 0; i < podcast.Count; i++)
             {
                 if (podcast[i] == null)
                 {
@@ -87,13 +91,14 @@ namespace FeedMeNomNom
                 }
                 else
                 {
-                    listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
+                    listBox_Feed.Items.Add(podcast[i].feedName);
+                    //listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
                 }
             }
 
 
             visibilityFeedSetting(false);
-            test.wipeCollectedData();
+            //test.wipeCollectedData();
         }
 
         private void closeFeed_Click(object sender, RoutedEventArgs e)
