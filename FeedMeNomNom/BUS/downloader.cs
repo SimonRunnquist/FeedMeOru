@@ -16,10 +16,10 @@ namespace FeedMeNomNom.BUS
 
         public void userDownload() {
 
-            UserVO dest = new UserVO();
-            string url = dest.downloadUrl;
-            string podName = dest.downloadPodName;
-            string file = dest.downloadFilename;
+            itemVO dest = new itemVO();
+            //string url = dest.downloadUrl;
+            //string podName = dest.downloadPodName;
+            //string file = dest.downloadFilename;
 
             using (var client = new WebClient())
             {

@@ -63,7 +63,7 @@
     <Compile Include="connectXML\saveXML.cs" />
     <Compile Include="DAO\categoryItem.cs" />
     <Compile Include="Validator\validate.cs" />
-    <Compile Include="VO\UserVO.cs" />
+    <Compile Include="VO\itemVO.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,7 +73,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAO\getFeed.cs" />
-    <Compile Include="BUS\addItem.cs" />
     <Compile Include="BUS\feed.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
