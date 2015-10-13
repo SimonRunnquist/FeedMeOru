@@ -14,7 +14,6 @@ namespace FeedMeNomNom.DAO
 {
     class getFeed
     {
-        UserVO listObjectVO = new UserVO();
         private string name;
         string[] feedArray = new string[200];
         string[] unfilteredURL = new string[400];

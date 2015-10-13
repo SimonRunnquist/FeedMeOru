@@ -51,6 +51,5 @@ namespace FeedMeNomNom.VO
             }
         }
 
-        public string
     }
 }

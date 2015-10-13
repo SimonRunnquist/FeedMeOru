@@ -29,7 +29,6 @@ namespace FeedMeNomNom
     {
         
         getFeed test = new getFeed();
-        addItem getItem = new addItem();
         saveXML createXml = new saveXML();
         string[] podcast;
         string[] downloadURL;
@@ -70,32 +69,32 @@ namespace FeedMeNomNom
         }
 
 
-        
-         
-
-        //private void getFeed_button_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    listBox_Feed.Items.Clear();
-        //    podcast = test.getPod(tbURL.Text);
-        //    downloadURL = test.getDownloadURL();
-
-        //    for (var i = 0; i < podcast.Length; i++)
-        //    {
-        //        if (podcast[i] == null)
-        //        {
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
-        //        }
-        //    }
 
 
-        //    visibilityFeedSetting(false);
-        //    test.wipeCollectedData();
-        //}
+
+        private void getFeed_button_Click(object sender, RoutedEventArgs e)
+        {
+
+            listBox_Feed.Items.Clear();
+            podcast = test.getPod(tbURL.Text);
+            downloadURL = test.getDownloadURL();
+
+            for (var i = 0; i < podcast.Length; i++)
+            {
+                if (podcast[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
+                }
+            }
+
+
+            visibilityFeedSetting(false);
+            test.wipeCollectedData();
+        }
 
         private void closeFeed_Click(object sender, RoutedEventArgs e)
         {

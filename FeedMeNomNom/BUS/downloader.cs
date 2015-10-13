@@ -24,9 +24,7 @@ namespace FeedMeNomNom.BUS
             using (var client = new WebClient())
             {
                 Console.WriteLine("Downloading...");
-                //client.DownloadFile("http://traffic.libsyn.com/alexosigge/aosavsnitt175.mp3", "190.mp3");
-
-                client.DownloadFile(url,@"..\..\RSS\" + podName + @"\"+ file);
+                client.DownloadFile("http://traffic.libsyn.com/alexosigge/aosavsnitt175.mp3", "190.mp3");
                 Console.WriteLine("Done!");
             }
         }
