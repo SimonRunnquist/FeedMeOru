@@ -51,8 +51,19 @@ namespace FeedMeNomNom.DAO
                 return podList;
 
             }
+        }
 
-        
+        public string getInfo(string name) {
+            string downloadURL = "";
+
+            for (var i = 0; i < podList.Count; i++) {
+                if (podList[i].feedName.Equals(name))
+                {
+                    downloadURL = podList[i].url;
+                }
+            }
+            
+            return downloadURL;
         }
     }
 }

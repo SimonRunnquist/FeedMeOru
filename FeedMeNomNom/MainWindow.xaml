@@ -6,13 +6,13 @@
         <TextBox x:Name="tbURL" Height="20" Margin="22,32,528,0" TextWrapping="Wrap" Text="http://alexosigge.libsyn.com//rss" VerticalAlignment="Top" FontFamily="Prestige Elite Std" Background="White" FontSize="10"/>
         <Button x:Name="getFeed_button" Content="Go!" HorizontalAlignment="Left" Margin="284,32,0,0" VerticalAlignment="Top" Width="34" Height="20" Click="getFeed_button_Click"/>
         <Button Content="Download MP3" HorizontalAlignment="Left" Margin="908,-78,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_1" Height="32"/>
-        <ListBox x:Name="listBox_Feed" HorizontalAlignment="Left" Height="413" Margin="0,63,0,0" VerticalAlignment="Top" Width="268" Background="#FF404040" BorderThickness="0" Foreground="White" Panel.ZIndex="3" FontWeight="Bold"/>
+        <ListBox x:Name="listBox_Feed" HorizontalAlignment="Left" Height="413" Margin="0,63,0,0" VerticalAlignment="Top" Width="268" Background="#FF404040" BorderThickness="0" Foreground="White" Panel.ZIndex="3" FontWeight="Bold" SelectionChanged="listBox_Feed_SelectionChanged"/>
         <Label Content="Search" HorizontalAlignment="Left" Height="22" Margin="18,10,0,0" VerticalAlignment="Top" Width="40" FontSize="10" Foreground="White"/>
         <ListBox x:Name="list_Copy1" HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="328" Background="#FF404040" BorderThickness="0" Panel.ZIndex="-1"/>
         <ListBox x:Name="list_Copy" HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="464" Background="#FF404040" BorderThickness="0" Panel.ZIndex="-1" Margin="328,0,0,0"/>
         <Rectangle x:Name="rectListboxFeed" Fill="#FF515151" HorizontalAlignment="Left" Height="32" Margin="0,471,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="268" Panel.ZIndex="3"/>
-        <Button x:Name="downloadSelectedPod" Content="Download Selected" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" Width="91" Panel.ZIndex="3" Height="19"/>
-        <Button x:Name="savePodFeed" Content="Save Podcast" HorizontalAlignment="Left" Margin="115,476,0,0" VerticalAlignment="Top" Width="68" Panel.ZIndex="3" Height="19"/>
+        <Button x:Name="downloadSelectedPod" Content="Download" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" Width="91" Panel.ZIndex="3" Height="19" Click="downloadSelectedPod_Click"/>
+        <Button x:Name="savePodFeed" Content="Save" HorizontalAlignment="Left" Margin="115,476,0,0" VerticalAlignment="Top" Width="68" Panel.ZIndex="3" Height="19"/>
         <Button x:Name="closeFeed" Content="Close" HorizontalAlignment="Left" Margin="197,476,0,0" VerticalAlignment="Top" Width="67" Click="closeFeed_Click" Panel.ZIndex="3" Height="19"/>
         <ListBox x:Name="list_Copy2" HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="792" Background="#FF404040" BorderThickness="0" Panel.ZIndex="-1" Margin="0,514,0,0"/>
         <Grid x:Name="gridPage" HorizontalAlignment="Left" Height="409" Margin="-800,86,-816,0" VerticalAlignment="Top" Width="2400" Background="#FF1D1D1D" Panel.ZIndex="2">
@@ -42,5 +42,20 @@
         <Button x:Name="viewMain" Content="Center" HorizontalAlignment="Left" Margin="373,532,0,0" VerticalAlignment="Top" Width="58" Click="viewMain_Click"/>
         <Button x:Name="viewFeeds" Content="Feeds" HorizontalAlignment="Left" Margin="711,532,0,0" VerticalAlignment="Top" Width="58" Click="viewFeeds_Click"/>
         <Button x:Name="viewCategory" Content="Category" HorizontalAlignment="Left" Margin="19,532,0,0" VerticalAlignment="Top" Width="58" Click="viewCategory_Click"/>
+        <ProgressBar x:Name="downloadBar" HorizontalAlignment="Left" Height="6" Margin="-4,508,-4,0" VerticalAlignment="Top" Width="800" BorderThickness="0">
+            <ProgressBar.BorderBrush>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FF404040" Offset="0.007"/>
+                    <GradientStop Color="#FF404040" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.BorderBrush>
+            <ProgressBar.Background>
+                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                    <GradientStop Color="#FF404040" Offset="0"/>
+                    <GradientStop Color="#FF404040" Offset="0.5"/>
+                    <GradientStop Color="#FF404040" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Background>
+        </ProgressBar>
     </Grid>
 </Window>

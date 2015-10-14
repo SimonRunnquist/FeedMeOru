@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -18,7 +19,6 @@ using FeedMeNomNom.DAO;
 using FeedMeNomNom.BUS;
 using FeedMeNomNom.connectXML;
 using System.Drawing;
-using System.Collections.Generic;
 using FeedMeNomNom.VO;
 
 namespace FeedMeNomNom
@@ -34,7 +34,7 @@ namespace FeedMeNomNom
         saveXML createXml = new saveXML();
         //string[] podcast;
         List<itemVO> podcast = new List<itemVO>();
-        string[] downloadURL;
+        downloader downloadURL = new downloader();
         
 
         public MainWindow()
@@ -82,7 +82,6 @@ namespace FeedMeNomNom
             //podcast = test.getPod(tbURL.Text);
             podcast = getItemList.createFeed(tbURL.Text);
             //downloadURL = test.getDownloadURL();
-            Console.WriteLine(podcast.Count);
             for (var i = 0; i < podcast.Count; i++)
             {
                 if (podcast[i] == null)
@@ -92,12 +91,9 @@ namespace FeedMeNomNom
                 else
                 {
                     listBox_Feed.Items.Add(podcast[i].feedName);
-                    
                     //listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
                 }
             }
-
-
             visibilityFeedSetting(false);
             //test.wipeCollectedData();
         }
@@ -132,7 +128,38 @@ namespace FeedMeNomNom
             gridPage.Margin = new Thickness(-800, top, -800, 0);
         }
 
-       
+        private void listBox_Feed_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = listBox_Feed.SelectedItem.ToString();
+
+            string hej = getItemList.getInfo(selectedItem);
+            Console.WriteLine(hej);
+        }
+
+        private void downloadSelectedPod_Click(object sender, RoutedEventArgs e)
+        {
+            
+            string selectedItem = listBox_Feed.SelectedItem.ToString();
+            string url = getItemList.getInfo(selectedItem);
+
+            downloadURL.getURLandDownload(url);
+            
+           
+            //do
+            //{ 
+            //        Thread.Sleep(500);
+            //   controlDownloadBar();
+
+            //} while (downloadURL.getPercentage < 100);
+            
+        }
+
+        
+
+        public void controlDownloadBar() {
+
+            downloadBar.Value = downloadURL.getPercentage;
+        }
 
 
     }
