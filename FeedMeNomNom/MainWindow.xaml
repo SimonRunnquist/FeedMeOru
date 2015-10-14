@@ -38,6 +38,7 @@
             <Rectangle Grid.Column="1" Fill="#FF103FBD" HorizontalAlignment="Left" Height="409" Margin="777,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="759" Grid.RowSpan="3"/>
             <Rectangle Grid.Column="1" Fill="#FFBD10AD" Height="409" Margin="1595,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Grid.RowSpan="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="759"/>
             <Rectangle Fill="#FF18BD10" HorizontalAlignment="Left" Height="409" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="759" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="10,0,0,0"/>
+            <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="1224,127,0,0" Grid.Row="1" VerticalAlignment="Top" Width="74" Click="button_Click"/>
         </Grid>
         <Button x:Name="viewMain" Content="Center" HorizontalAlignment="Left" Margin="373,532,0,0" VerticalAlignment="Top" Width="58" Click="viewMain_Click"/>
         <Button x:Name="viewFeeds" Content="Feeds" HorizontalAlignment="Left" Margin="711,532,0,0" VerticalAlignment="Top" Width="58" Click="viewFeeds_Click"/>

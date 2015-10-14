@@ -195,6 +195,11 @@ namespace FeedMeNomNom
             
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Cat saveCat = new Cat();
+            saveCat.Save();
 
+        }
     }
 }

@@ -58,11 +58,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BUS\Cat.cs" />
     <Compile Include="BUS\downloader.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
     <Compile Include="DAO\testAddItem.cs" />
     <Compile Include="Validator\validate.cs" />
+    <Compile Include="VO\categoryVO.cs" />
     <Compile Include="VO\itemVO.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
