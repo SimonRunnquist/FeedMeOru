@@ -58,11 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BUS\Cat.cs" />
     <Compile Include="BUS\downloader.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
+    <Compile Include="DAO\testAddItem.cs" />
     <Compile Include="Validator\validate.cs" />
-    <Compile Include="VO\UserVO.cs" />
+    <Compile Include="VO\categoryVO.cs" />
+    <Compile Include="VO\itemVO.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,7 +75,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAO\getFeed.cs" />
-    <Compile Include="BUS\addItem.cs" />
     <Compile Include="BUS\feed.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -107,6 +109,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\" />
     <Folder Include="RSS\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

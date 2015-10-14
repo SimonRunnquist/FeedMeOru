@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -17,6 +18,8 @@ using System.ServiceModel.Syndication;
 using FeedMeNomNom.DAO;
 using FeedMeNomNom.BUS;
 using FeedMeNomNom.connectXML;
+using System.Drawing;
+using FeedMeNomNom.VO;
 
 namespace FeedMeNomNom
 {
@@ -26,36 +29,143 @@ namespace FeedMeNomNom
     public partial class MainWindow : Window
     {
         
-        getFeed test = new getFeed();
+        //getFeed test = new getFeed();
+        testAddItem getItemList = new testAddItem();
         saveXML createXml = new saveXML();
+        //string[] podcast;
+        List<itemVO> podcast = new List<itemVO>();
+        downloader downloadURL = new downloader();
+        
 
         public MainWindow()
         {
             InitializeComponent();
             createXml.createBaseXml();
+            visibilityFeedSetting(true);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            test.googleGet(tbURL.Text);
-        }
+      
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            test.downloadMP3();
+            //test.downloadMP3();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void visibilityFeedSetting(bool setting) {
+            if (setting)
+            {
+                downloadSelectedPod.Visibility = System.Windows.Visibility.Hidden;
+                savePodFeed.Visibility = System.Windows.Visibility.Hidden;
+                closeFeed.Visibility = System.Windows.Visibility.Hidden;
+                listBox_Feed.Visibility = System.Windows.Visibility.Hidden;
+                rectListboxFeed.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            else {
+                downloadSelectedPod.Visibility = System.Windows.Visibility.Visible;
+                savePodFeed.Visibility = System.Windows.Visibility.Visible;
+                closeFeed.Visibility = System.Windows.Visibility.Visible;
+                listBox_Feed.Visibility = System.Windows.Visibility.Visible;
+                rectListboxFeed.Visibility = System.Windows.Visibility.Visible;
+            }
+
+        }
+
+
+
+
+
+        private void getFeed_button_Click(object sender, RoutedEventArgs e)
         {
-            tbURL.Text = test.Name;
-            test.Name = "Mac!";
+
+            listBox_Feed.Items.Clear();
+            //podcast = test.getPod(tbURL.Text);
+            podcast = getItemList.createFeed(tbURL.Text);
+            //downloadURL = test.getDownloadURL();
+            for (var i = 0; i < podcast.Count; i++)
+            {
+                if (podcast[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    listBox_Feed.Items.Add(podcast[i].feedName);
+                    //listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
+                }
+            }
+            visibilityFeedSetting(false);
+            //test.wipeCollectedData();
+        }
+
+        private void closeFeed_Click(object sender, RoutedEventArgs e)
+        {
+            visibilityFeedSetting(true);
         }
 
         
 
-       
+         
 
+        private void viewCategory_Click(object sender, RoutedEventArgs e)
+        {
+            double top = gridPage.Margin.Top;
+            double left = gridPage.Margin.Left;
+            gridPage.Margin = new Thickness(0, top, -788, 0);
+        }
 
+        private void viewFeeds_Click(object sender, RoutedEventArgs e)
+        {
+            double top = gridPage.Margin.Top;
+            double left = gridPage.Margin.Left;
+            gridPage.Margin = new Thickness(-1618, top, 0, 0);
+        }
+
+        private void viewMain_Click(object sender, RoutedEventArgs e)
+        {
+            double top = gridPage.Margin.Top;
+            double left = gridPage.Margin.Left;
+            gridPage.Margin = new Thickness(-800, top, -800, 0);
+        }
+
+        private void listBox_Feed_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = listBox_Feed.SelectedItem.ToString();
+
+            string hej = getItemList.getInfo(selectedItem);
+            Console.WriteLine(hej);
+        }
+
+        private void downloadSelectedPod_Click(object sender, RoutedEventArgs e)
+        {
+            
+            string selectedItem = listBox_Feed.SelectedItem.ToString();
+            string url = getItemList.getInfo(selectedItem);
+
+            downloadURL.getURLandDownload(url);
+            
+           
+            //do
+            //{ 
+            //        Thread.Sleep(500);
+            //   controlDownloadBar();
+
+            //} while (downloadURL.getPercentage < 100);
+            
+        }
+
+        
+
+        public void controlDownloadBar() {
+
+            downloadBar.Value = downloadURL.getPercentage;
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Cat saveCat = new Cat();
+            saveCat.Save();
+
+        }
     }
 }

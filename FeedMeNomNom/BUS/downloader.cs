@@ -5,31 +5,65 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using FeedMeNomNom.VO;
+using FeedMeNomNom;
 
 namespace FeedMeNomNom.BUS
 {
     class downloader
     {
-        string url;
-        string podName;
-        string filename;
+        //string url;
+        private double _getPercentage;
 
-        public void userDownload() {
+        public void getURLandDownload(string podName) {
 
-            UserVO dest = new UserVO();
-            string url = dest.downloadUrl;
-            string podName = dest.downloadPodName;
-            string file = dest.downloadFilename;
+            itemVO dest = new itemVO();
+            //string url = dest.downloadUrl;
+            //string podName = dest.downloadPodName;
+            //string file = dest.downloadFilename;
+            WebClient client = new WebClient();
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(progressChanged);
 
-            using (var client = new WebClient())
-            {
-                Console.WriteLine("Downloading...");
-                //client.DownloadFile("http://traffic.libsyn.com/alexosigge/aosavsnitt175.mp3", "190.mp3");
-
-                client.DownloadFile(url,@"..\..\RSS\" + podName + @"\"+ file);
-                Console.WriteLine("Done!");
-            }
+            Console.WriteLine("Downloading...");
+            client.DownloadFileAsync(new Uri(podName), "Hejsan.mp3");
+            Console.WriteLine("Done!");
+                
+                //client.DownloadFile(podName, "192.mp3");
+                
+            
         }
+
+        public void progressChanged(object sender, DownloadProgressChangedEventArgs e) {
+            
+            
+            double bytesInc = double.Parse(e.BytesReceived.ToString());
+            double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+            double percentage = bytesInc / totalBytes * 100;
+
+            percentage = int.Parse(Math.Truncate(percentage).ToString());
+
+            getPercentage = percentage;
+            
+            Console.WriteLine(_getPercentage);
+
+            
+            
+            
+            
+            
+        }
+
+        public double getPercentage {
+
+            get {
+                return _getPercentage;
+            }
+
+            set {
+                _getPercentage = value;
+            }
+
+        }
+        
 
         
     }

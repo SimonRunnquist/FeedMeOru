@@ -13,15 +13,15 @@ namespace FeedMeNomNom.connectXML
     class saveXML
     {
         public void XMLsave() {
-            UserVO xmlInfo = new UserVO();
+            itemVO xmlInfo = new itemVO();
 
             int id = xmlInfo.id; 
             string name = xmlInfo.feedName;
-            string pod = xmlInfo.podcast;
-            string category = xmlInfo.category;
-            int interval = xmlInfo.interval;
+            //string pod = xmlInfo.podcast;
+            //string category = xmlInfo.category;
+            //int interval = xmlInfo.interval;
             string url = xmlInfo.url;
-            bool activated = xmlInfo.activated;
+            //bool activated = xmlInfo.activated;
 
             XDocument addFeed = XDocument.Load("feedXml.xml");
             XElement root = addFeed.Element("RSSfeed");
@@ -31,11 +31,7 @@ namespace FeedMeNomNom.connectXML
                 new XElement("feed"),
                 new XAttribute("ID", id),
                 new XElement("feedname", name),
-                new XElement("pod", pod),
-                new XElement("category", category),
-                new XElement("interval", interval),
-                new XElement("url", url),
-                new XElement("activated", activated));
+                new XElement("url", url)); 
             
             addFeed.Save("feedXml.xml");
 
