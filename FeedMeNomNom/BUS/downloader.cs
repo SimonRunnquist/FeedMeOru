@@ -33,24 +33,31 @@ namespace FeedMeNomNom.BUS
         }
 
         public void progressChanged(object sender, DownloadProgressChangedEventArgs e) {
-            
-            
-            double bytesInc = double.Parse(e.BytesReceived.ToString());
-            double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
-            double percentage = bytesInc / totalBytes * 100;
 
-            percentage = int.Parse(Math.Truncate(percentage).ToString());
+            try
+            {
+                double bytesInc = double.Parse(e.BytesReceived.ToString());
+                double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+                double percentage = bytesInc / totalBytes * 100;
 
-            getPercentage = percentage;
-            
-            Console.WriteLine(_getPercentage);
+                percentage = int.Parse(Math.Truncate(percentage).ToString());
 
+                getPercentage = percentage;
+
+                Console.WriteLine(_getPercentage);
+            }
+
+            catch (Exception i) {
+                Console.WriteLine(i.Message);
+            }
             
             
             
             
             
         }
+
+        
 
         public double getPercentage {
 

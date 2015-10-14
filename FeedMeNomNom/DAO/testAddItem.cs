@@ -30,7 +30,7 @@ namespace FeedMeNomNom.DAO
                 foreach (SyndicationItem item in feed.Items)
                 {
                     itemVO singlePod = new itemVO();
-
+                    //HEJJEHEJEEHJ
                     singlePod.feedName = item.Title.Text;
                     singlePod.id = i;
 

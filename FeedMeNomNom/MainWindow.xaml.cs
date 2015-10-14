@@ -35,6 +35,7 @@ namespace FeedMeNomNom
         //string[] podcast;
         List<itemVO> podcast = new List<itemVO>();
         downloader downloadURL = new downloader();
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
         
 
         public MainWindow()
@@ -143,8 +144,11 @@ namespace FeedMeNomNom
             string url = getItemList.getInfo(selectedItem);
 
             downloadURL.getURLandDownload(url);
+            createTimer();
             
-           
+
+
+
             //do
             //{ 
             //        Thread.Sleep(500);
@@ -154,11 +158,41 @@ namespace FeedMeNomNom
             
         }
 
-        
+        private void createTimer() {
 
-        public void controlDownloadBar() {
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
 
-            downloadBar.Value = downloadURL.getPercentage;
+            double percentage = downloadURL.getPercentage;
+
+        }
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            
+                controlDownloadBar(downloadURL.getPercentage);
+           
+            
+        }
+        public void controlDownloadBar(double percentage)
+        {
+            if (percentage < 100)
+            {
+                downloadBar.Value = percentage;
+
+            }
+
+            else
+            {
+                MessageBox.Show("Pod Downloaded!");
+                downloadBar.Value = 0;
+                dispatcherTimer.Stop();
+
+            }
+                
+            
+
+            
         }
 
 
