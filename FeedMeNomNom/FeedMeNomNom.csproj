@@ -58,12 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BUS\Cat.cs" />
+    <Compile Include="BUS\catetogry.cs" />
     <Compile Include="BUS\downloader.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
     <Compile Include="connectXML\testXML.cs" />
-    <Compile Include="DAO\testAddItem.cs" />
+    <Compile Include="BUS\testAddItem.cs" />
     <Compile Include="Validator\validate.cs" />
     <Compile Include="VO\categoryVO.cs" />
     <Compile Include="VO\itemVO.cs" />
@@ -75,8 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DAO\getFeed.cs" />
-    <Compile Include="BUS\feed.cs" />
+    <Compile Include="BUS\getFeed.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
