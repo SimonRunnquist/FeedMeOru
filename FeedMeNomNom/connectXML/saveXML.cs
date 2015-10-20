@@ -12,15 +12,11 @@ namespace FeedMeNomNom.connectXML
 {
     class saveXML
     {
-        public void XMLsave() {
-            itemVO xmlInfo = new itemVO();
-
-            int id = xmlInfo.id; 
-            string name = xmlInfo.feedName;
+        public void XMLsave(int _id, string _name, string _url, string _category) {
+            //categoryVO xmlInfo = new categoryVO();
             //string pod = xmlInfo.podcast;
             //string category = xmlInfo.category;
             //int interval = xmlInfo.interval;
-            string url = xmlInfo.url;
             //bool activated = xmlInfo.activated;
 
             XDocument addFeed = XDocument.Load("feedXml.xml");
@@ -29,9 +25,9 @@ namespace FeedMeNomNom.connectXML
             XElement firstRow = rows.First();
             firstRow.AddBeforeSelf(
                 new XElement("feed"),
-                new XAttribute("ID", id),
-                new XElement("feedname", name),
-                new XElement("url", url)); 
+                new XAttribute("ID", _id),
+                new XElement("feedname", _name),
+                new XElement("url", _url)); 
             
             addFeed.Save("feedXml.xml");
 
@@ -41,7 +37,7 @@ namespace FeedMeNomNom.connectXML
         }
 
         public void createBaseXml() {
-            XmlWriter feedWriter = XmlWriter.Create("feedXml.xml");
+            XmlWriter feedWriter = XmlWriter.Create("MackanXml.xml");
 
             feedWriter.WriteStartDocument();
             feedWriter.WriteStartElement("RSSfeed");

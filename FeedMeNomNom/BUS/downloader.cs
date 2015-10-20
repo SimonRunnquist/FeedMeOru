@@ -24,7 +24,7 @@ namespace FeedMeNomNom.BUS
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(progressChanged);
 
             Console.WriteLine("Downloading...");
-            client.DownloadFileAsync(new Uri(podName), "Hejsan.mp3");
+            client.DownloadFileAsync(new Uri(podName), "160.mp3");
             Console.WriteLine("Done!");
                 
                 //client.DownloadFile(podName, "192.mp3");

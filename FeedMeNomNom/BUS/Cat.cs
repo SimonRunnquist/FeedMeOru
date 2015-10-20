@@ -34,7 +34,7 @@ namespace FeedMeNomNom.BUS
         public void Save()
         {
             var xml = new System.Xml.Serialization.XmlSerializer(typeof(Cat));
-            using (var s = System.IO.File.Open(@"C:\Temp\save.xml", System.IO.FileMode.Create))
+            using (var s = System.IO.File.Open("hej.xml", System.IO.FileMode.Create))
             {
                 xml.Serialize(s, this);
                 s.Flush();

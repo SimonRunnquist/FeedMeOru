@@ -62,6 +62,7 @@
     <Compile Include="BUS\downloader.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
+    <Compile Include="connectXML\testXML.cs" />
     <Compile Include="DAO\testAddItem.cs" />
     <Compile Include="Validator\validate.cs" />
     <Compile Include="VO\categoryVO.cs" />

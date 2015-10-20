@@ -8,9 +8,63 @@ namespace FeedMeNomNom.VO
 {
     class categoryVO
     {
-        private int podID;
-        private string podName;
-        private string podURL;
-        private string category;
+        private int _podID;
+        private string _podName;
+        private string _podURL;
+        private string _category;
+
+        public int podID
+        {
+            get
+            {
+                return _podID;
+            }
+
+            set
+            {
+                _podID = value;
+            }
+        }
+
+        public string podName
+        {
+            get
+            {
+                return _podName;
+            }
+
+            set
+            {
+                _podName = value;
+            }
+        }
+
+        public string podURL
+        {
+            get
+            {
+                return _podURL;
+            }
+
+            set
+            {
+                _podURL = value;
+            }
+        }
+
+        public string category
+        {
+            get
+            {
+                return _category;
+            }
+
+            set
+            {
+                _category = value;
+            }
+        }
     }
+
+    
 }
