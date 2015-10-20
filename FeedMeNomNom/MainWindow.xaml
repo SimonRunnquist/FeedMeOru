@@ -38,9 +38,10 @@
             <Rectangle Grid.Column="1" Fill="#FF103FBD" HorizontalAlignment="Left" Height="409" Margin="778,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="10" Grid.RowSpan="3"/>
             <Rectangle Grid.Column="1" Fill="#FFBD10AD" Height="409" Margin="1595,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Grid.RowSpan="3" HorizontalAlignment="Left" Width="8"/>
             <ListBox HorizontalAlignment="Left" Width="166" Background="#FF404040" BorderThickness="0" Foreground="White" Grid.RowSpan="2" Margin="26,13,0,0" FontWeight="Bold" FontSize="20" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <Label Content="Catergory" Margin="26,0,0,0" VerticalAlignment="Top" Height="33" Width="166" Grid.RowSpan="2" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FF404040"/>
+            <Label Content="Category" Margin="26,0,0,0" VerticalAlignment="Top" Height="33" Width="166" Grid.RowSpan="2" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FF404040"/>
             <Rectangle Fill="#FF10BD20" HorizontalAlignment="Left" Height="409" Margin="16,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="10" Grid.RowSpan="3"/>
             <Rectangle Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="409" Margin="174,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="559" Grid.RowSpan="3"/>
+            <Button x:Name="addCategoryButton" Grid.Column="1" HorizontalAlignment="Left" Margin="116,4,0,0" VerticalAlignment="Top" Width="40" Grid.RowSpan="2" Height="29" Content="+" FontSize="16" Click="addCategoryButton_Click"/>
         </Grid>
         <Button x:Name="viewMain" Content="Center" HorizontalAlignment="Left" Margin="373,532,0,0" VerticalAlignment="Top" Width="58" Click="viewMain_Click"/>
         <Button x:Name="viewFeeds" Content="Feeds" HorizontalAlignment="Left" Margin="711,532,0,0" VerticalAlignment="Top" Width="58" Click="viewFeeds_Click"/>

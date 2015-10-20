@@ -18,10 +18,6 @@ namespace FeedMeNomNom.DAO
             using (XmlReader reader = XmlReader.Create(url)) //If null måste fixas, blir fel vid tomt eller felaktigt fält
             {
                 var i = 0;
-
-                
-
-
                 SyndicationFeed feed = SyndicationFeed.Load(reader);
                 //Console.WriteLine(feed.Title.Text);
                 //Console.WriteLine(feed.Links[0].Uri); 

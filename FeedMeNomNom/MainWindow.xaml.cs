@@ -36,6 +36,7 @@ namespace FeedMeNomNom
         List<itemVO> podcast = new List<itemVO>();
         downloader downloadURL = new downloader();
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        category cate = new category();
         
 
         public MainWindow()
@@ -43,6 +44,7 @@ namespace FeedMeNomNom
             InitializeComponent();
             createXml.createBaseXml();
             visibilityFeedSetting(true);
+            //createXml.createBaseXml();
         }
 
       
@@ -80,9 +82,7 @@ namespace FeedMeNomNom
         {
 
             listBox_Feed.Items.Clear();
-            //podcast = test.getPod(tbURL.Text);
             podcast = getItemList.createFeed(tbURL.Text);
-            //downloadURL = test.getDownloadURL();
             for (var i = 0; i < podcast.Count; i++)
             {
                 if (podcast[i] == null)
@@ -92,11 +92,9 @@ namespace FeedMeNomNom
                 else
                 {
                     listBox_Feed.Items.Add(podcast[i].feedName);
-                    //listBox_Feed.Items.Add(Environment.NewLine + podcast[i] + Environment.NewLine + downloadURL[i]);
                 }
             }
             visibilityFeedSetting(false);
-            //test.wipeCollectedData();
         }
 
         private void closeFeed_Click(object sender, RoutedEventArgs e)
@@ -106,7 +104,8 @@ namespace FeedMeNomNom
 
         
 
-         
+        // Vid knapptryck ändras vyn i MainWindow
+        // med hjälp av att ändra margin på ett element
 
         private void viewCategory_Click(object sender, RoutedEventArgs e)
         {
@@ -129,6 +128,8 @@ namespace FeedMeNomNom
             gridPage.Margin = new Thickness(-800, top, -800, 0);
         }
 
+        
+        //testFunktion för 
         private void listBox_Feed_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = listBox_Feed.SelectedItem.ToString();
@@ -195,11 +196,13 @@ namespace FeedMeNomNom
             
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            catetogry saveCat = new catetogry();
-            saveCat.Save();
+        
 
+        private void addCategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            cate.writeAttr();
+            //cate.createNewCategory("Relation"); //Ska finnas
+            //cate.readXML(); //Ska finnas
         }
     }
 }
