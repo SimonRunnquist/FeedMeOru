@@ -253,5 +253,10 @@ namespace FeedMeNomNom
         {
             player.Pause();
         }
+
+        public void värdelös() { 
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
     }
 }
