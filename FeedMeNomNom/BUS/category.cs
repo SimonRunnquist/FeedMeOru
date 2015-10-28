@@ -14,6 +14,11 @@ namespace FeedMeNomNom.BUS
 {
     class category
     {
+        public void värdelös()
+        {
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
         List<categoryVO> cat = new List<categoryVO>();
 
         public static category Load()

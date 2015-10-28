@@ -14,6 +14,11 @@ namespace FeedMeNomNom.BUS
         //string url;
         private double _getPercentage;
 
+        public void värdelös()
+        {
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
         public void getURLandDownload(string podName) {
 
             try

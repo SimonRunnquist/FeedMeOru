@@ -13,6 +13,11 @@ namespace FeedMeNomNom.connectXML
 {
     class saveXML
     {
+        public void värdelös()
+        {
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
         public void XMLupdate(int _id, string _name, string _url, string _category) {
             //categoryVO xmlInfo = new categoryVO();
             //string pod = xmlInfo.podcast;

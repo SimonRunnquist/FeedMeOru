@@ -12,7 +12,11 @@ namespace FeedMeNomNom.connectXML
     class readXML
     {
         List<String> getNames = new List<string>();
-
+        public void värdelös()
+        {
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
         public List<String> readXMLDoc()
         {
             try

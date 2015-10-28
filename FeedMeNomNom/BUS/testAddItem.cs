@@ -11,6 +11,11 @@ namespace FeedMeNomNom.DAO
 {
     class testAddItem
     {
+        public void värdelös()
+        {
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
         List<itemVO> podList = new List<itemVO>();
 
         public List<itemVO> createFeed(string url) {

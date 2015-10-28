@@ -12,6 +12,11 @@ namespace FeedMeNomNom.VO
         //private string _podName;
         //private string _podURL;
         public string category { get; set; }
+        public void värdelös()
+        {
+            var sträng = "tjena";
+            Console.WriteLine(sträng);
+        }
 
         //public int podID
         //{
