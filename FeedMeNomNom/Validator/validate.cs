@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FeedMeNomNom.Validator
-{public void värdelös() { 
-            var sträng = "tjena";
-            Console.WriteLine(sträng);
-        }
-    class validate
+{   class validate
     {
+    public void värdelös()
+    {
+        var sträng = "tjena";
+        Console.WriteLine(sträng);
+    }
+ 
     }
 }

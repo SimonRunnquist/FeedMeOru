@@ -8,11 +8,7 @@ namespace FeedMeNomNom.VO
 {
     class itemVO
     {
-        public void värdelös()
-        {
-            var sträng = "tjena";
-            Console.WriteLine(sträng);
-        }
+        
         private int _id;
         private string _feedName;
         private string _url;

@@ -86,8 +86,9 @@ namespace FeedMeNomNom
 
         private void getFeed_button_Click(object sender, RoutedEventArgs e)
         {
-
+            podcast.Clear();
             listBox_Feed.Items.Clear();
+
             podcast = getItemList.createFeed(tbURL.Text);
             for (var i = 0; i < podcast.Count; i++)
             {
@@ -100,7 +101,6 @@ namespace FeedMeNomNom
                     listBox_Feed.Items.Add(podcast[i].feedName);
                 }
             }
-            podcast.Clear();
             visibilityFeedSetting(false);
         }
 
@@ -148,10 +148,14 @@ namespace FeedMeNomNom
                 Console.WriteLine(info);
             }
 
-            catch (Exception hej) {
+            catch (Exception hej)
+            {
                 var x = hej.Message;
                 Console.WriteLine(x);
             }
+
+            
+            
 
         }
 
@@ -160,6 +164,7 @@ namespace FeedMeNomNom
             
             string selectedItem = listBox_Feed.SelectedItem.ToString();
             string url = getItemList.getInfo(selectedItem);
+            
             downloadURL.getURLandDownload(url);
             podURL = url;
             createTimer();
@@ -254,9 +259,6 @@ namespace FeedMeNomNom
             player.Pause();
         }
 
-        public void värdelös() { 
-            var sträng = "tjena";
-            Console.WriteLine(sträng);
-        }
+       
     }
 }

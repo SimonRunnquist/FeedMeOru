@@ -11,11 +11,7 @@ namespace FeedMeNomNom.DAO
 {
     class testAddItem
     {
-        public void värdelös()
-        {
-            var sträng = "tjena";
-            Console.WriteLine(sträng);
-        }
+        
         List<itemVO> podList = new List<itemVO>();
 
         public List<itemVO> createFeed(string url) {
@@ -31,13 +27,13 @@ namespace FeedMeNomNom.DAO
                 foreach (SyndicationItem item in feed.Items)
                 {
                     itemVO singlePod = new itemVO();
-                    //HEJJEHEJEEHJ
                     singlePod.feedName = item.Title.Text;
                     singlePod.id = i;
 
                     foreach (var link in item.Links)
                     {
                         singlePod.url = link.Uri.ToString();
+                        Console.WriteLine(singlePod.url);
                     }
                     
 
@@ -49,6 +45,7 @@ namespace FeedMeNomNom.DAO
                          Console.WriteLine(link.Uri);
                      }*/
                 }
+                Console.WriteLine(podList.Count);
                 return podList;
 
             }
@@ -56,14 +53,13 @@ namespace FeedMeNomNom.DAO
 
         public string getInfo(string name) {
             string downloadURL = "";
-
             for (var i = 0; i < podList.Count; i++) {
                 if (podList[i].feedName.Equals(name))
                 {
+                    
                     downloadURL = podList[i].url;
                 }
             }
-            
             return downloadURL;
         }
     }
