@@ -32,11 +32,13 @@ namespace FeedMeNomNom
         //getFeed test = new getFeed();
         testAddItem getItemList = new testAddItem();
         saveXML createXml = new saveXML();
+        readXML readxml = new readXML();
         //string[] podcast;
         List<itemVO> podcast = new List<itemVO>();
         downloader downloadURL = new downloader();
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         category cate = new category();
+        string podURL;
         
 
         public MainWindow()
@@ -45,6 +47,10 @@ namespace FeedMeNomNom
             createXml.createBaseXml();
             visibilityFeedSetting(true);
             //createXml.createBaseXml();
+            readxml.readXMLDoc();
+            cate.deleteCategory("Marcus knarkar");
+            player.LoadedBehavior = MediaState.Manual;
+
         }
 
       
@@ -94,6 +100,7 @@ namespace FeedMeNomNom
                     listBox_Feed.Items.Add(podcast[i].feedName);
                 }
             }
+            podcast.Clear();
             visibilityFeedSetting(false);
         }
 
@@ -129,13 +136,23 @@ namespace FeedMeNomNom
         }
 
         
-        //testFunktion för 
+        
         private void listBox_Feed_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedItem = listBox_Feed.SelectedItem.ToString();
+            try
+            {
+                var selectedItem = listBox_Feed.SelectedItem.ToString();
+                string info = getItemList.getInfo(selectedItem);
+                podURL = info;
 
-            string hej = getItemList.getInfo(selectedItem);
-            Console.WriteLine(hej);
+                Console.WriteLine(info);
+            }
+
+            catch (Exception hej) {
+                var x = hej.Message;
+                Console.WriteLine(x);
+            }
+
         }
 
         private void downloadSelectedPod_Click(object sender, RoutedEventArgs e)
@@ -143,8 +160,8 @@ namespace FeedMeNomNom
             
             string selectedItem = listBox_Feed.SelectedItem.ToString();
             string url = getItemList.getInfo(selectedItem);
-
             downloadURL.getURLandDownload(url);
+            podURL = url;
             createTimer();
             
 
@@ -200,9 +217,41 @@ namespace FeedMeNomNom
 
         private void addCategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            cate.writeAttr();
+            List<String> Hejsan = new List<string>();
+            Hejsan = readxml.readXMLDoc();
+            for (var i = 0; i < Hejsan.Count; i++)
+            {
+                if (Hejsan[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    categoryListBox.Items.Add(Hejsan[i]);
+                }
+            }
+            Console.WriteLine(Hejsan);
+            //cate.writeAttr();
             //cate.createNewCategory("Relation"); //Ska finnas
             //cate.readXML(); //Ska finnas
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            player.Source = new Uri(podURL);
+            player.Play();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            player.Stop();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            player.Pause();
         }
     }
 }

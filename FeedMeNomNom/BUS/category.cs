@@ -122,6 +122,11 @@ namespace FeedMeNomNom.BUS
             //XElement addfeed = new XElement(null,null);
         }
 
+        public void deleteCategory(string name) { 
+            
+        }
+            
+
     }
 
 

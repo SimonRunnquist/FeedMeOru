@@ -16,18 +16,27 @@ namespace FeedMeNomNom.BUS
 
         public void getURLandDownload(string podName) {
 
-            itemVO dest = new itemVO();
-            //string url = dest.downloadUrl;
-            //string podName = dest.downloadPodName;
-            //string file = dest.downloadFilename;
-            WebClient client = new WebClient();
-            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(progressChanged);
+            try
+            {
+                itemVO dest = new itemVO();
+                //string url = dest.downloadUrl;
+                //string podName = dest.downloadPodName;
+                //string file = dest.downloadFilename;
+                WebClient client = new WebClient();
+                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(progressChanged);
 
-            Console.WriteLine("Downloading...");
-            client.DownloadFileAsync(new Uri(podName), "160.mp3");
-            Console.WriteLine("Done!");
-                
-                //client.DownloadFile(podName, "192.mp3");
+                Console.WriteLine("Downloading...");
+                client.DownloadFileAsync(new Uri(podName), "160.mp3");
+                Console.WriteLine("Done!");
+
+                //client.DownloadFile(podName, "192.mp3"); 
+
+            }
+
+            catch (Exception e) {
+                var skrivutfel = e.Message;
+                Console.WriteLine(skrivutfel);
+            }
                 
             
         }
@@ -69,6 +78,19 @@ namespace FeedMeNomNom.BUS
                 _getPercentage = value;
             }
 
+        }
+
+        public void asdasd() {
+            try {
+               
+
+                
+            }
+
+            catch (Exception e) {
+                var Tjena = e.Message;
+                Console.WriteLine(Tjena);
+            }
         }
         
 
