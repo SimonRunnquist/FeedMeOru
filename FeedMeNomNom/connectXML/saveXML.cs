@@ -13,11 +13,7 @@ namespace FeedMeNomNom.connectXML
 {
     class saveXML
     {
-        public void värdelös()
-        {
-            var sträng = "tjena";
-            Console.WriteLine(sträng);
-        }
+        
         public void XMLupdate(int _id, string _name, string _url, string _category) {
             //categoryVO xmlInfo = new categoryVO();
             //string pod = xmlInfo.podcast;
@@ -34,7 +30,6 @@ namespace FeedMeNomNom.connectXML
                 new XAttribute("ID", _id),
                 new XElement("feedname", _name),
                 new XElement("url", _url)); 
-            
             addFeed.Save("feedXml.xml");
 
             //Kanske lägga till en extra XML fil som läser pod och Activated? eller?

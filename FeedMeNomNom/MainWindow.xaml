@@ -5,7 +5,6 @@
     <Grid Background="#FF1D1D1D">
         <TextBox x:Name="tbURL" Height="20" Margin="22,32,528,0" TextWrapping="Wrap" Text="http://alexosigge.libsyn.com//rss" VerticalAlignment="Top" FontFamily="Prestige Elite Std" Background="White" FontSize="10"/>
         <Button x:Name="getFeed_button" Content="Go!" HorizontalAlignment="Left" Margin="269,32,0,0" VerticalAlignment="Top" Width="34" Height="20" Click="getFeed_button_Click"/>
-        <Button Content="Download MP3" HorizontalAlignment="Left" Margin="908,-78,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_1" Height="32"/>
         <ListBox x:Name="listBox_Feed" HorizontalAlignment="Left" Height="413" Margin="0,63,0,0" VerticalAlignment="Top" Width="268" Background="#FF404040" BorderThickness="0" Foreground="White" Panel.ZIndex="3" FontWeight="Bold" SelectionChanged="listBox_Feed_SelectionChanged"/>
         <Label Content="Search" HorizontalAlignment="Left" Height="22" Margin="18,10,0,0" VerticalAlignment="Top" Width="46" FontSize="10" Foreground="White" FontWeight="Bold"/>
         <ListBox x:Name="list_Copy1" HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="328" Background="#FF404040" BorderThickness="0" Panel.ZIndex="-1"/>

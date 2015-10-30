@@ -15,11 +15,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using System.ServiceModel.Syndication;
-using FeedMeNomNom.DAO;
-using FeedMeNomNom.BUS;
 using FeedMeNomNom.connectXML;
 using System.Drawing;
 using FeedMeNomNom.VO;
+using FeedMeNomNom.BUS;
+using Validate;
 
 namespace FeedMeNomNom
 {
@@ -28,12 +28,10 @@ namespace FeedMeNomNom
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        //getFeed test = new getFeed();
-        testAddItem getItemList = new testAddItem();
+       
+        getItems getItemList = new getItems();
         saveXML createXml = new saveXML();
         readXML readxml = new readXML();
-        //string[] podcast;
         List<itemVO> podcast = new List<itemVO>();
         downloader downloadURL = new downloader();
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
@@ -55,12 +53,9 @@ namespace FeedMeNomNom
 
       
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //test.downloadMP3();
-        }
+        
 
-        private void visibilityFeedSetting(bool setting) {
+        internal void visibilityFeedSetting(bool setting) {
             if (setting)
             {
                 downloadSelectedPod.Visibility = System.Windows.Visibility.Hidden;
@@ -70,7 +65,8 @@ namespace FeedMeNomNom
                 rectListboxFeed.Visibility = System.Windows.Visibility.Hidden;
             }
 
-            else {
+            else 
+            {
                 downloadSelectedPod.Visibility = System.Windows.Visibility.Visible;
                 savePodFeed.Visibility = System.Windows.Visibility.Visible;
                 closeFeed.Visibility = System.Windows.Visibility.Visible;
@@ -108,6 +104,7 @@ namespace FeedMeNomNom
         {
             visibilityFeedSetting(true);
         }
+
 
         
 
@@ -168,17 +165,6 @@ namespace FeedMeNomNom
             downloadURL.getURLandDownload(url);
             podURL = url;
             createTimer();
-            
-
-
-
-            //do
-            //{ 
-            //        Thread.Sleep(500);
-            //   controlDownloadBar();
-
-            //} while (downloadURL.getPercentage < 100);
-            
         }
 
         private void createTimer() {
