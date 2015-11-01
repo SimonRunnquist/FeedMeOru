@@ -115,13 +115,9 @@ namespace FeedMeNomNom.BUS
 
             specificCategory.Last().Add(addFeedWithPod);
 
-            
-
-            
-
             doc.Save("Tushar.xml");
 
-            //XElement addfeed = new XElement(null,null);
+            
         }
 
         public void deleteCategory(string name) { 

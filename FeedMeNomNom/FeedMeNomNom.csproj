@@ -61,9 +61,9 @@
     <Compile Include="BUS\category.cs" />
     <Compile Include="BUS\downloader.cs" />
     <Compile Include="BUS\getItems.cs" />
+    <Compile Include="BUS\intervalUpdate.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
-    <Compile Include="Validator\validate.cs" />
     <Compile Include="VO\categoryVO.cs" />
     <Compile Include="VO\itemVO.cs" />
     <Page Include="MainWindow.xaml">

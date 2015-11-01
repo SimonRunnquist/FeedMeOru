@@ -44,11 +44,12 @@ namespace FeedMeNomNom
             InitializeComponent();
             createXml.createBaseXml();
             visibilityFeedSetting(true);
+            visibilitySavePodSetting(true);
             //createXml.createBaseXml();
             readxml.readXMLDoc();
             cate.deleteCategory("Marcus knarkar");
             player.LoadedBehavior = MediaState.Manual;
-
+            loadCategoryList();
         }
 
       
@@ -74,6 +75,20 @@ namespace FeedMeNomNom
                 rectListboxFeed.Visibility = System.Windows.Visibility.Visible;
             }
 
+        }
+
+        internal void visibilitySavePodSetting(bool setting) {
+            if (setting){
+                saveGridPopup.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else{
+                saveGridPopup.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        private void loadCategoryList() {
+             cbCategory.ItemsSource = readxml.readXMLDoc();
+             categoryListBox.ItemsSource = readxml.readXMLDoc();
         }
 
 
@@ -198,11 +213,7 @@ namespace FeedMeNomNom
                 dispatcherTimer.Stop();
 
             }
-                
-            
-
-            
-        }
+         }
 
         
 
@@ -210,17 +221,18 @@ namespace FeedMeNomNom
         {
             List<String> Hejsan = new List<string>();
             Hejsan = readxml.readXMLDoc();
-            for (var i = 0; i < Hejsan.Count; i++)
-            {
-                if (Hejsan[i] == null)
-                {
-                    break;
-                }
-                else
-                {
-                    categoryListBox.Items.Add(Hejsan[i]);
-                }
-            }
+            categoryListBox.ItemsSource = readxml.readXMLDoc();
+            //for (var i = 0; i < Hejsan.Count; i++)
+            //{
+            //    if (Hejsan[i] == null)
+            //    {
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        categoryListBox.Items.Add(Hejsan[i]);
+            //    }
+            //}
             Console.WriteLine(Hejsan);
             //cate.writeAttr();
             //cate.createNewCategory("Relation"); //Ska finnas
@@ -243,6 +255,22 @@ namespace FeedMeNomNom
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             player.Pause();
+        }
+
+        private void savePodFeed_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("false");
+            visibilitySavePodSetting(false);
+        }
+
+        private void closePodFeedPopup_Click(object sender, RoutedEventArgs e)
+        {
+            visibilitySavePodSetting(true);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            readxml.getFeedCount("Alex och Sigge");
         }
 
        

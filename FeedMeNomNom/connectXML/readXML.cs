@@ -6,17 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using FeedMeNomNom.VO;
 
 namespace FeedMeNomNom.connectXML
 {
     class readXML
     {
         List<String> getNames = new List<string>();
-        public void värdelös()
-        {
-            var sträng = "tjena";
-            Console.WriteLine(sträng);
-        }
+        List<String> getChilds = new List<string>();
         public List<String> readXMLDoc()
         {
             try
@@ -25,14 +22,14 @@ namespace FeedMeNomNom.connectXML
                 IEnumerable<XElement> childElements =
                     from el in po.Elements()
                     select el;
+
                 foreach (XElement el in childElements)
                 {
                     getNames.Add(el.FirstAttribute.Value);
-                    //Console.WriteLine(el.FirstAttribute.Value);
 
                 }
                 for (var i = 0; i < getNames.Count; i++) {
-                    if (getNames[i] == null)
+                    if (getNames[i] == null) 
                     {
                         break;
                     }
@@ -52,7 +49,20 @@ namespace FeedMeNomNom.connectXML
             }
 
             return getNames;
+        }
+
+        public int getFeedCount(string podname) { 
             
+
+            XElement doc = XElement.Load("Tushar.xml");
+
+            IEnumerable<XElement> items =
+                     from ele in doc.Descendants("titleFeed")
+                     where (string)ele.Attribute("name") == podname
+                     select ele;
+
+            Console.WriteLine(items.Elements("item").Count());
+            return items.Elements("item").Count();
         }
 
         

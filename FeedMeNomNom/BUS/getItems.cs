@@ -69,7 +69,6 @@ namespace FeedMeNomNom.BUS
             for (var i = 0; i < podList.Count; i++) {
                 if (podList[i].feedName.Equals(name))
                 {
-                    
                     downloadURL = podList[i].url;
                 }
             }
