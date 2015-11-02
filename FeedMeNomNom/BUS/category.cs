@@ -91,10 +91,10 @@ namespace FeedMeNomNom.BUS
             //xmlNode.Save("Tushar.xml");
         }
 
-        public void readXML() {
-            XElement datXML = XElement.Load("Tushar.xml");
-            Console.WriteLine(datXML.Name);
-        }
+        //public void readXML() {
+        //    XElement datXML = XElement.Load("Tushar.xml");
+        //    Console.WriteLine(datXML.Name);
+        //}
 
         public void writeAttr() {
             XElement addFeedWithPod = new XElement("titleFeed",
@@ -120,8 +120,31 @@ namespace FeedMeNomNom.BUS
             
         }
 
-        public void deleteCategory(string name) { 
-            
+        public void deleteCategory(string name) {
+
+            XElement doc = XElement.Load("Tushar.xml");
+
+            IEnumerable<XElement> categoryDelete =
+                from el in doc.Elements("category")
+                where (string)el.Attribute("name") == name
+                select el;
+            foreach (XElement ele in categoryDelete)
+            {
+                categoryDelete.FirstOrDefault().Remove();
+            }
+            doc.Save("Tushar.xml");
+        }
+
+        public void editCategory(string name, string newName) {
+            XElement doc = XElement.Load("Tushar.xml");
+
+            IEnumerable<XElement> categoryEdit =
+                 from el in doc.Elements("category")
+                 where (string)el.Attribute("name") == name
+                 select el;
+
+            categoryEdit.First().SetAttributeValue("name", newName);
+        
         }
             
 

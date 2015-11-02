@@ -76,7 +76,7 @@ namespace Validate
             else
             {
                 checkifEmpty = false;
-                Console.WriteLine("URL tom");
+                Console.WriteLine("tom");
 
             }
             return checkifEmpty;

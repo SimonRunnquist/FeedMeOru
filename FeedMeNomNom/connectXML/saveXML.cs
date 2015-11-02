@@ -13,51 +13,55 @@ namespace FeedMeNomNom.connectXML
 {
     class saveXML
     {
-        
-        public void XMLupdate(int _id, string _name, string _url, string _category) {
-            //categoryVO xmlInfo = new categoryVO();
-            //string pod = xmlInfo.podcast;
-            //string category = xmlInfo.category;
-            //int interval = xmlInfo.interval;
-            //bool activated = xmlInfo.activated;
 
-            XDocument addFeed = XDocument.Load("feedXml.xml");
-            XElement root = addFeed.Element("RSSfeed");
-            IEnumerable<XElement> rows = root.Descendants("feeds");
-            XElement firstRow = rows.First();
-            firstRow.AddBeforeSelf(
-                new XElement("Feed"),
-                new XAttribute("ID", _id),
-                new XElement("feedname", _name),
-                new XElement("url", _url)); 
-            addFeed.Save("feedXml.xml");
+        public void XMLupdate(int _check, string _name, string _url, string _title)
+        {
+
+            XElement doc = XElement.Load("Tushar.xml");
+
+            XElement element = new XElement(("item"),
+                new XElement("name", _name),
+                new XElement("url", _url),
+                new XElement("checked", _check));
+
+            IEnumerable<XElement> items =
+                     from ele in doc.Descendants("titleFeed")
+                     where (string)ele.Attribute("name") == _title
+                     select ele;
+
+            items.First().Add(element);
+
+            Console.WriteLine("Update successful");
+
+            doc.Save("Tushar.xml");
+
+            Console.WriteLine("Saved new information to XML");
 
             //Kanske lägga till en extra XML fil som läser pod och Activated? eller?
-
-            
         }
 
-        public void createBaseXml() {
-            XmlWriter feedWriter = XmlWriter.Create("SupXml.xml");
 
-            feedWriter.WriteStartDocument();
-            feedWriter.WriteStartElement("RSSfeed");
-            feedWriter.WriteStartElement("feeds", "Tjena");
+        public void createTitleFeed(string name, string interval, string url, string category) {
 
-            feedWriter.WriteEndElement();
-            feedWriter.WriteEndDocument();
-            feedWriter.Close();
+            XElement doc = XElement.Load("Tushar.xml");
 
-           // XmlSerializer SerializerObj = new XmlSerializer(typeof(categoryVO));
+            XElement element = new XElement(("titleFeed"),
+                new XAttribute("name", name),
+                new XAttribute("url", url),
+                new XAttribute("interval", interval));
+
+            IEnumerable<XElement> items =
+                from ele in doc.Elements("category")
+                where (string)ele.Attribute("name") == category
+                select ele;
+
+            items.First().Add(element);
+
+            Console.WriteLine("Updated XML!");
+
+            doc.Save("Tushar.xml");
+        
         }
-
-        //public void saveXML(string filename) {
-        //    using (FileStream stream = new FileStream(filename, FileMode.Create)) {
-        //        var XML = new XmlSerializer(typeof(itemVO));
-        //        XML.Serialize(stream, this);
-        //    }
-        //}
-
 
     }
 }

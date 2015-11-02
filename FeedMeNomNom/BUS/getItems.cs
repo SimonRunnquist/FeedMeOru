@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FeedMeNomNom.VO;
 using System.Xml;
 using System.ServiceModel.Syndication;
+using FeedMeNomNom.connectXML;
 
 namespace FeedMeNomNom.BUS
 
@@ -14,9 +15,12 @@ namespace FeedMeNomNom.BUS
     {
         
         List<itemVO> podList = new List<itemVO>();
+        saveXML savexml = new saveXML();
+
 
         public List<itemVO> createFeed(string url) 
         {
+            podList.Clear();
             if (Validate.validate.useInternal(url) && Validate.validate.checkEmpty(url))
             {
                 try
@@ -38,21 +42,15 @@ namespace FeedMeNomNom.BUS
                             foreach (var link in item.Links)
                             {
                                 singlePod.url = link.Uri.ToString();
-                                Console.WriteLine(singlePod.url);
                             }
-
-
-
                             podList.Add(singlePod);
-                            Console.WriteLine(podList[i].feedName + " " + podList[i].id);
                             i++;
                             /* foreach (var link in item.Links) {
                                  Console.WriteLine(link.Uri);
                              }*/
                         }
                     }
-
-                }
+            }
                 catch (Exception e)
                 {
                     var checkProblem = e.Message;
@@ -73,6 +71,14 @@ namespace FeedMeNomNom.BUS
                 }
             }
             return downloadURL;
+        }
+
+        public void updateExistingFeed(string title, int count) {
+            for (var i = 0; i < count; i++ )
+            {
+                Console.WriteLine(podList[i].feedName + " " + podList[i].url);
+                savexml.XMLupdate(0, podList[i].feedName, podList[i].url, title);
+            }
         }
     }
 }

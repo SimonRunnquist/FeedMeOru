@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using FeedMeNomNom.VO;
+using FeedMeNomNom.BUS;
 
 namespace FeedMeNomNom.connectXML
 {
@@ -63,6 +64,43 @@ namespace FeedMeNomNom.connectXML
 
             Console.WriteLine(items.Elements("item").Count());
             return items.Elements("item").Count();
+        }
+
+        public void getAllFeeds() {
+
+            intervalUpdate inter = new intervalUpdate();
+            string name;
+            string url;
+            string interval;
+
+            XElement doc = XElement.Load("Tushar.xml");
+
+            IEnumerable<XElement> feeds =
+                from ele in doc.Descendants("titleFeed")
+                select ele;
+
+
+            foreach (XElement el in feeds) {
+                name = el.Attributes("name").Single().Value.ToString();
+                url = el.Attributes("url").Single().Value.ToString();
+                interval = el.Attributes("interval").Single().Value.ToString();
+
+                inter.url = url;
+                inter.title = name;
+                inter.createTimer(Int32.Parse(interval));
+
+                Console.WriteLine(el.Attributes("name").Single().Value.ToString());
+                Console.WriteLine(interval);
+               
+            }
+
+            
+
+
+
+            
+
+            
         }
 
         

@@ -30,32 +30,28 @@ namespace FeedMeNomNom
     {
        
         getItems getItemList = new getItems();
-        saveXML createXml = new saveXML();
+        saveXML savexml = new saveXML();
         readXML readxml = new readXML();
         List<itemVO> podcast = new List<itemVO>();
         downloader downloadURL = new downloader();
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        category cate = new category();
+        category Category = new category();
         string podURL;
         
 
         public MainWindow()
         {
             InitializeComponent();
-            createXml.createBaseXml();
             visibilityFeedSetting(true);
             visibilitySavePodSetting(true);
-            //createXml.createBaseXml();
+            visibilityAddCategorySetting(true);
             readxml.readXMLDoc();
-            cate.deleteCategory("Marcus knarkar");
             player.LoadedBehavior = MediaState.Manual;
             loadCategoryList();
+            //checkIntervals();
         }
 
       
-
-        
-
         internal void visibilityFeedSetting(bool setting) {
             if (setting)
             {
@@ -86,9 +82,36 @@ namespace FeedMeNomNom
             }
         }
 
+        internal void visibilityAddCategorySetting(bool setting)
+        {
+            if (setting)
+            {
+                categoryGridPopup.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else
+            {
+                categoryGridPopup.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
         private void loadCategoryList() {
-             cbCategory.ItemsSource = readxml.readXMLDoc();
-             categoryListBox.ItemsSource = readxml.readXMLDoc();
+            List<string> category = new List<string>();
+            categoryListBox.Items.Clear();
+            cbCategory.Items.Clear();
+            
+            category = readxml.readXMLDoc();
+
+            foreach (string item in category) {
+                categoryListBox.Items.Add(item);
+                cbCategory.Items.Add(item);
+            }
+
+            category.Clear();
+
+        }
+
+        private void checkIntervals() {
+            readxml.getAllFeeds();
         }
 
 
@@ -191,27 +214,23 @@ namespace FeedMeNomNom
             double percentage = downloadURL.getPercentage;
 
         }
+        
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            
-                controlDownloadBar(downloadURL.getPercentage);
-           
-            
+            controlDownloadBar(downloadURL.getPercentage);
         }
+
         public void controlDownloadBar(double percentage)
         {
             if (percentage < 100)
             {
                 downloadBar.Value = percentage;
-
             }
-
             else
             {
                 MessageBox.Show("Pod Downloaded!");
                 downloadBar.Value = 0;
                 dispatcherTimer.Stop();
-
             }
          }
 
@@ -222,27 +241,14 @@ namespace FeedMeNomNom
             List<String> Hejsan = new List<string>();
             Hejsan = readxml.readXMLDoc();
             categoryListBox.ItemsSource = readxml.readXMLDoc();
-            //for (var i = 0; i < Hejsan.Count; i++)
-            //{
-            //    if (Hejsan[i] == null)
-            //    {
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        categoryListBox.Items.Add(Hejsan[i]);
-            //    }
-            //}
+            
             Console.WriteLine(Hejsan);
-            //cate.writeAttr();
-            //cate.createNewCategory("Relation"); //Ska finnas
-            //cate.readXML(); //Ska finnas
+            
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             player.Source = new Uri(podURL);
             player.Play();
         }
@@ -270,7 +276,73 @@ namespace FeedMeNomNom
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            readxml.getFeedCount("Alex och Sigge");
+            intervalUpdate inter = new intervalUpdate();
+            inter.url = tbURL.Text;
+            inter.title = "Alex och Sigge";
+            //readxml.getFeedCount("Alex och Sigge");
+            inter.createTimer(10);
+
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            string category = categoryListBox.SelectedItem.ToString();
+            Category.deleteCategory(category);
+            loadCategoryList();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            visibilityAddCategorySetting(false);
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            string name = categoryNewName.Text;
+            Category.createNewCategory(name);
+            visibilityAddCategorySetting(true);
+            loadCategoryList();
+        }
+
+        private void savePodFeedPopup_Click(object sender, RoutedEventArgs e)
+        {
+            string interval = intervalTextBox.Text;
+            string name = addFeedName.Text;
+            string category = cbCategory.SelectedItem.ToString();
+            int podcastCount = podcast.Count();
+
+
+            if (Validate.validate.checkEmpty(name))
+            {
+                if (Validate.validate.checkEmpty(category))
+                {
+                    if (Validate.validate.checkEmpty(interval) && Validate.validate.checkNumber(interval))
+                    {
+                        savexml.createTitleFeed(name, interval, tbURL.Text, category);
+                        getItemList.updateExistingFeed(name, podcastCount);
+                        visibilitySavePodSetting(true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not numbers");
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("Choose Something");
+                }
+            }
+            else {
+                Console.WriteLine("Add a name to feed!");
+            }
+
+            
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+
         }
 
        

@@ -11,7 +11,7 @@ namespace FeedMeNomNom.VO
         //private int _podID;
         //private string _podName;
         //private string _podURL;
-        public string category { get; set; }
+       // public string category { get; set; }
         
 
         //public int podID
