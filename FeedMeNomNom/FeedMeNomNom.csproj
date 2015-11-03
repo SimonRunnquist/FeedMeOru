@@ -64,8 +64,9 @@
     <Compile Include="BUS\intervalUpdate.cs" />
     <Compile Include="connectXML\readXML.cs" />
     <Compile Include="connectXML\saveXML.cs" />
-    <Compile Include="VO\categoryVO.cs" />
     <Compile Include="VO\itemVO.cs" />
+    <Compile Include="BUS\welcome\altWelcomeText.cs" />
+    <Compile Include="BUS\welcome\welcomeText.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -29,8 +29,7 @@ namespace FeedMeNomNom.BUS
                     {
                         var i = 0;
                         SyndicationFeed feed = SyndicationFeed.Load(reader);
-                        //Console.WriteLine(feed.Title.Text);
-                        //Console.WriteLine(feed.Links[0].Uri); 
+                        
 
 
                         foreach (SyndicationItem item in feed.Items)
@@ -45,9 +44,7 @@ namespace FeedMeNomNom.BUS
                             }
                             podList.Add(singlePod);
                             i++;
-                            /* foreach (var link in item.Links) {
-                                 Console.WriteLine(link.Uri);
-                             }*/
+                            
                         }
                     }
             }

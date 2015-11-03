@@ -36,26 +36,49 @@
             </Grid.ColumnDefinitions>
             <Rectangle Grid.Column="1" Fill="#FF103FBD" HorizontalAlignment="Left" Height="409" Margin="778,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="10" Grid.RowSpan="3"/>
             <Rectangle Grid.Column="1" Fill="#FFBD10AD" Height="409" Margin="1595,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Grid.RowSpan="3" HorizontalAlignment="Left" Width="8"/>
-            <ListBox x:Name="categoryListBox" HorizontalAlignment="Left" Width="166" Background="#FF404040" BorderThickness="0" Foreground="White" Margin="26,13,0,26" FontWeight="Bold" FontSize="20" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <ListBox x:Name="categoryListBox" HorizontalAlignment="Left" Width="166" Background="#FF404040" BorderThickness="0" Foreground="White" Margin="26,13,0,26" FontWeight="Bold" FontSize="14" Grid.Row="1" Grid.ColumnSpan="2" SelectionChanged="categoryListBox_SelectionChanged"/>
             <Label Content="Category" Margin="26,0,0,0" VerticalAlignment="Top" Height="33" Width="166" Grid.RowSpan="2" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FF404040"/>
-            <Rectangle Fill="#FF10BD20" HorizontalAlignment="Left" Height="409" Margin="16,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="10" Grid.RowSpan="3"/>
-            <Rectangle Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="409" Margin="174,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="559" Grid.RowSpan="3"/>
+            <Rectangle Fill="#FFBD102F" HorizontalAlignment="Left" Height="409" Margin="16,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="10" Grid.RowSpan="3"/>
             <Grid Grid.Column="1" Margin="1037,182,1024,-9" Grid.Row="1" Grid.RowSpan="2"/>
-            <Rectangle Fill="#FF404040" HorizontalAlignment="Left" Height="46" Margin="26,343,0,0" Grid.Row="1" Stroke="#FF404040" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <Button Content="+" HorizontalAlignment="Left" Margin="26,365,0,0" Grid.Row="1" Grid.RowSpan="2" Width="30" Grid.ColumnSpan="2" Click="Button_Click_5"/>
+            <Rectangle Fill="#FF404040" HorizontalAlignment="Left" Height="56" Margin="26,333,0,0" Grid.Row="1" Stroke="#FF404040" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Button Content="+" HorizontalAlignment="Left" Margin="26,365,0,0" Grid.Row="1" Grid.RowSpan="2" Width="30" Grid.ColumnSpan="2" Click="Button_Click_5" Height="24" VerticalAlignment="Top"/>
             <Button Content="-" HorizontalAlignment="Left" Height="24" Margin="126,365,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="30" Grid.Column="1" Click="Button_Click_4"/>
-            <Button Content="Edit" Height="24" Margin="20,365,2282,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Grid.Column="1"/>
-            <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="1578,-47,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-            <Grid x:Name="categoryGridPopup" Grid.Column="1" HorizontalAlignment="Left" Height="69" Margin="174,320,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="232" Background="#FF404040">
+            <Button Content="Edit" Height="24" Margin="20,365,2282,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Grid.Column="1" Click="Button_Click_8"/>
+            <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="1478,-142,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <Grid x:Name="categoryGridPopup" Grid.Column="1" HorizontalAlignment="Left" Height="69" Margin="174,320,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="232" Background="#FF303030">
                 <TextBox x:Name="categoryNewName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Button Content="Add" HorizontalAlignment="Left" Margin="147,37,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
                 <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="69" Foreground="White"/>
+                <Button Content="X" HorizontalAlignment="Left" Margin="214,0,0,0" VerticalAlignment="Top" Width="18" Click="Button_Click_9"/>
             </Grid>
-            <Grid x:Name="categoryGridPopupEdit" Grid.Column="1" HorizontalAlignment="Left" Height="69" Margin="406,320,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="232" Background="#FF404040">
-                <TextBox x:Name="categoryEdit" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Grid x:Name="categoryGridPopupEdit" Grid.Column="1" HorizontalAlignment="Left" Height="69" Margin="174,320,0,0" Grid.Row="1" VerticalAlignment="Top" Width="232" Background="#FF303030" Grid.RowSpan="2">
+                <TextBox x:Name="categoryEditText" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Button Content="Edit" HorizontalAlignment="Left" Margin="147,37,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_7"/>
                 <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="69" Foreground="White"/>
+                <Button Content="X" Margin="214,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="18" Click="Button_Click_10"/>
             </Grid>
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="409" Margin="161,0,0,0" VerticalAlignment="Top" Width="572" Grid.RowSpan="3" Background="#FF404040" Panel.ZIndex="-1">
+                <ListBox x:Name="ListCategoryFeeds" HorizontalAlignment="Left" Height="365" Margin="10,34,0,0" VerticalAlignment="Top" Width="150" Background="#FF1D1D1D" BorderBrush="#FF1D1D1D" Foreground="White" SelectionChanged="ListCategoryFeeds_SelectionChanged"/>
+                <ListBox x:Name="listCategoryFeedPods" HorizontalAlignment="Left" Height="365" Margin="165,34,0,0" VerticalAlignment="Top" Width="158" Background="#FF1D1D1D" BorderBrush="#FF1D1D1D" Foreground="White" SelectionChanged="listCategoryFeedPods_SelectionChanged"/>
+                <Grid HorizontalAlignment="Left" Height="108" Margin="328,34,0,0" VerticalAlignment="Top" Width="239" Background="#FF1D1D1D">
+                    <Label x:Name="lblNamePod" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Width="201" FontSize="10"/>
+                    <Label x:Name="lblURLPod" Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Foreground="White" Width="219" FontSize="10"/>
+                    <Label x:Name="lblCheckedPod" Content="Label" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Foreground="White" Width="201" FontSize="10"/>
+                </Grid>
+                <Label Content="Feeds" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Foreground="White" FontSize="14"/>
+                <Label Content="Pods" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top" Width="150" Foreground="White" FontSize="14"/>
+                <Label Content="Info" HorizontalAlignment="Left" Margin="328,10,0,0" VerticalAlignment="Top" Width="150" Foreground="White" FontSize="14"/>
+                <Button Content="Edit Pod" HorizontalAlignment="Left" Margin="492,377,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+                <Grid x:Name="editPodPopup" HorizontalAlignment="Left" Height="208" Margin="328,147,0,0" VerticalAlignment="Top" Width="239" Background="#FF303030">
+                    <TextBox x:Name="editPodNewName" HorizontalAlignment="Left" Height="23" Margin="10,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+                    <TextBox x:Name="editPodNewURL" HorizontalAlignment="Left" Height="23" Margin="10,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Label Content="URL" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Button Content="Save" HorizontalAlignment="Left" Margin="154,176,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_12"/>
+                    <Button Content="X" HorizontalAlignment="Left" Margin="221,0,0,0" VerticalAlignment="Top" Width="18" Click="Button_Click_11"/>
+                </Grid>
+            </Grid>
+            <Label x:Name="lblWelcomeText" Content="HEJHEJHEJ" Grid.Column="1" HorizontalAlignment="Left" Margin="1346,332,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="382" Panel.ZIndex="20"/>
         </Grid>
         <Button x:Name="viewMain" Content="Center" HorizontalAlignment="Left" Margin="381,64,0,0" VerticalAlignment="Top" Width="78" Click="viewMain_Click" Background="#FF404040" Foreground="White" BorderThickness="0,1,1,1"/>
         <Button x:Name="viewFeeds" Content="Feeds" HorizontalAlignment="Left" Margin="459,64,0,0" VerticalAlignment="Top" Width="82" Click="viewFeeds_Click" RenderTransformOrigin="0.5,0.5" Background="#FF404040" Foreground="White" BorderThickness="0,1,1,1">
